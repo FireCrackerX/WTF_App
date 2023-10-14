@@ -5,13 +5,14 @@ import SnapButton from '../Component/SnapButton'
 import { Camera, useCameraDevice, useCameraFormat } from 'react-native-vision-camera'
 
 const CameraPage = ({navigation, route}) => {
+    console.log(route.params.type)
     const camera = useRef();
     const [cameraPermission, setCameraPermission] = useState();
 
     useEffect(() => {
         (async () => {
             const cameraPermissionStatus = await Camera.requestCameraPermission()
-            console.log('A : ', cameraPermissionStatus)
+            // console.log('A : ', cameraPermissionStatus)
             setCameraPermission(cameraPermissionStatus)
         })()
     }, [])
@@ -28,7 +29,7 @@ const CameraPage = ({navigation, route}) => {
                 skipMetadata: true,
             })
             
-            console.log(snapshot.path)
+            // console.log(snapshot.path)
             navigation.navigate('ConfirmPicturePage', {imageURL: 'file://'+snapshot.path, imageType: 'Camera', type: route.params.type})
         } catch (e) {
             console.log(e)
@@ -57,13 +58,33 @@ const CameraPage = ({navigation, route}) => {
             console.log('device null')
             return null
         }
-        if(cameraPermission !== 'granted') {
-            console.log(cameraPermission)
+        if(cameraPermission != 'granted') {
+            console.log(cameraPermission != 'granted')
             return null
         }
 
         return rederTakingSnapshot()
     }
+
+    const openImagePicker = () => {
+        const options = {
+          mediaType: 'photo',
+          includeBase64: false,
+          maxHeight: 2000,
+          maxWidth: 2000,
+        };
+    
+        launchImageLibrary(options, (response) => {
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          } else if (response.error) {
+            console.log('Image picker error: ', response.error);
+          } else {
+            let imageUri = response.uri || response.assets?.[0]?.uri;
+            console.log(imageUri)
+          }
+        });
+      };
 
   return (
     <View style={Styles.Background_Color}>

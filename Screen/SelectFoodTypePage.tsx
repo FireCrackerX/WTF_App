@@ -41,7 +41,7 @@ const SelectFoodTypePage = ({navigation}: {navigation: any}) => {
                       <TouchableOpacity onPress={() => onSelectType('Curry and Soup')}>
                         <NavigateButton text='CURRY AND SOUP' />
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={() => onSelectType('Other')}>
+                      <TouchableOpacity onPress={() => onSelectType('Dish and Appetizer')}>
                         <NavigateButton text='DISH AND APPETIZER' />
                       </TouchableOpacity>
                       <TouchableOpacity onPress={() => onPressHistoryButton()} style={Styles.Com_History_Button_Box}>

@@ -3,17 +3,35 @@ import React from 'react'
 import Styles from '../Styles'
 import NavigateButton from '../Component/NavigateButton'
 import BackButton from '../Component/BackButton'
+import { launchImageLibrary } from 'react-native-image-picker'
 
-const SelectPicturePage = ({navigation, route}: {navigation:any, route:any}) => {
-  console.log(route.params.type)
+const SelectPicturePage = ({navigation, route}) => {
+  // console.log(route.params.type)
   
   const onSelectCamera = () => {
     navigation.navigate('CameraPage', {type: route.params.type})
   }
 
-  const onSelectImage = () => {
+  const openImagePicker = () => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: false,
+      maxHeight: 2000,
+      maxWidth: 2000,
+    };
 
-  }
+    launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('Image picker error: ', response.error);
+      } else {
+        let imageUri = response.uri || response.assets?.[0]?.uri;
+        console.log(imageUri)
+        navigation.navigate('ConfirmPicturePage', {imageURL: imageUri, imageType: 'Image', type: route.params.type})
+      }
+    });
+  };
 
   const onPressBack = () => {
     navigation.navigate('SelectFoodTypePage')
@@ -41,10 +59,10 @@ const SelectPicturePage = ({navigation, route}: {navigation:any, route:any}) => 
                     <View style={Styles.Com_Background_Button}>
                       <Text style={Styles.Com_Background_Button_Text}>SELECT PICTURE</Text>
                       <Text style={Styles.Com_Background_Button_Detail_Text}>(.jpg, .png)</Text>
-                      <TouchableOpacity onPress={onSelectCamera}>
+                      <TouchableOpacity onPress={() => onSelectCamera()}>
                         <NavigateButton text='CAMERA' />
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={onSelectImage}>
+                      <TouchableOpacity onPress={() => openImagePicker()}>
                         <NavigateButton text='IMAGE' />
                       </TouchableOpacity>
                       <TouchableOpacity onPress={onPressBack} style={Styles.Com_Back_Button_Box_SelectPicPage}>
