@@ -212,11 +212,21 @@ const Styles=StyleSheet.create({
     },
 
     Com_Snap_Button_Box: {
-        width: '50%',
-        height: '9%',
-        marginTop: '5%',
+        height: '10%',
+        aspectRatio: 1,
+        marginTop: '4%',
         alignSelf: 'center'
     },
+
+    Com_Snap_Button: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#FBB03B',
+        alignSelf: 'center',
+        borderRadius: 100,
+        justifyContent: 'center'
+    },
+
 
     Background_Color: {
         backgroundColor: '#1F1C18',

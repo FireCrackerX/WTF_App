@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import Styles from '../Styles'
-import HistoryButton from '../Component/HistoryButton'
+import SnapButton from '../Component/SnapButton'
 import { Camera, useCameraDevice, useCameraFormat } from 'react-native-vision-camera'
 
 const CameraPage = ({navigation, route}) => {
@@ -85,7 +85,7 @@ const CameraPage = ({navigation, route}) => {
                   </View>
                   <View style={Styles.Com_Background_Button_Box}>
                     <View style={Styles.Com_Background_Button}>
-                        <Text style={Styles.Com_Background_Button_Text}>CONFIRM PICTURE</Text>
+                        <Text style={Styles.Com_Background_Button_Text}>TAKE A PICTURE</Text>
                         <Text style={Styles.Com_Background_Button_Detail_Text}></Text>
                         <View style={Styles.Camera_Back_Drop_Box}>
                             <View style={Styles.Confirm_Picture_Back_drop}>
@@ -97,7 +97,7 @@ const CameraPage = ({navigation, route}) => {
                             </View>
                         </View>
                         <TouchableOpacity onPress={handleTackSnapshot} style={Styles.Com_Snap_Button_Box} >
-                            <HistoryButton text='Snapshot' style={Styles.Com_History_Button} />
+                            <SnapButton text='Snapshot' style={Styles.Com_History_Button} />
                         </TouchableOpacity>
                         {/* <BothButton backText='BACK' nextText='CONFIRM' navigation={navigation} /> */}
                     </View>
