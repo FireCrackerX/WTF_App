@@ -428,6 +428,16 @@ const Styles=StyleSheet.create({
         alignSelf: 'center'
     },
 
+    History_Picture_Camera: {
+        width: '100%',
+        height: '100%',
+        alignSelf: 'center',
+        borderRadius: 15,
+        transform : [{
+            rotateZ: '270deg'
+        }]
+    },
+
     History_Picture:{
         width: '100%',
         height: '100%',
@@ -459,7 +469,8 @@ const Styles=StyleSheet.create({
     History_Widget_Date: {
         fontFamily: 'Inter-Regular',
         fontSize: 14,
-        color: '#8F8F8F'
+        color: '#8F8F8F',
+        textAlign: 'center'
     },
 
     Food_Select_Widget_Box:{

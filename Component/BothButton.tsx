@@ -1,11 +1,14 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Styles from '../Styles';
+import input from '../TestInput.json'
 
 interface Detail {
     backText: string;
     nextText: string;
     type: string;
+    imageURL: string;
+    imageType: string;
     navigation : any;
 }
 
@@ -16,7 +19,7 @@ const BothButton = (props: Detail) => {
 
   const onPressConfirm = () => {
     // API here
-    props.navigation.navigate('SelectFoodFromAPIPage')
+    props.navigation.navigate('SelectFoodFromAPIPage', {imageURL: props.imageURL, inputData: input, inputType: 'API', imageType: props.imageType})
   }
 
   return (

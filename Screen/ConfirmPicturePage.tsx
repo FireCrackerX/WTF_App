@@ -2,7 +2,8 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 import Styles from '../Styles'
 import BothButton from '../Component/BothButton'
-const ConfirmPicturePage = ({navigation, route}: {navigation:any, route:any}) => {
+
+const ConfirmPicturePage = ({navigation, route}: {navigation: any, route: any}) => {
   let s = Styles.Picture;
   if(route.params.imageType === 'Camera'){
     s = Styles.Camera_Picture
@@ -36,7 +37,7 @@ const ConfirmPicturePage = ({navigation, route}: {navigation:any, route:any}) =>
                           </View>
                       </View>
                   </View>
-                  <BothButton backText='BACK' nextText='CONFIRM' navigation={navigation} type={route.params.type} />
+                  <BothButton backText='BACK' nextText='CONFIRM' navigation={navigation} type={route.params.type} imageURL={route.params.imageURL} imageType={route.params.imageType} />
                 </View>
                   </View>
                 </View>
