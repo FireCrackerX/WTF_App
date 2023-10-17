@@ -486,13 +486,19 @@ const Styles=StyleSheet.create({
         height: '100%'
     },
 
-    Food_Select_Widget_Image_Box:{
+    Food_Select_Widget_Detail_Box:{
         backgroundColor: '#2C2823',
         borderRadius: 35,
         width: '100%',
         height: undefined,
         aspectRatio: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
+    },
+
+    Food_Select_Widget_Image_Box: {
+        width: '100%',
+        aspectRatio: 1,
+        top: '5%'
     },
 
     Food_Select_Image: {
@@ -528,6 +534,27 @@ const Styles=StyleSheet.create({
         textAlign: 'center'
     },
 
+    Percent_Widget_Box: {
+        height: '12%',
+        width: '50%',
+        alignSelf: 'center',
+   
+    },
+
+    Percent_Widget: {
+        backgroundColor: '#836433',
+        borderRadius: 50,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center'
+    },
+
+    Percent_Widget_Text: {
+        fontFamily: 'IstokWeb-Bold',
+        fontSize: 12,
+        color: '#FFFFFF',
+        alignSelf: 'center'
+    },
 })
 
 export default Styles

@@ -95,7 +95,7 @@ const SelectFoodFromAPIPage = ({navigation, route}) => {
                     {route.params.inputData.map(d => (
                     <View style={Styles.Food_Select_Widget_Box} key={d.image_url}>
                         <TouchableOpacity onPress={() => selectFood(d)}>
-                            <FoodSelectWidget imageURL={d.image_url} name={d.name} />
+                            <FoodSelectWidget imageURL={d.image_url} name={d.name} percent={d.probability} />
                         </TouchableOpacity>
                     </View>
                     ))}
