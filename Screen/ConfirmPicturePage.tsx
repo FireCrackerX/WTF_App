@@ -4,6 +4,7 @@ import Styles from '../Styles'
 import BothButton from '../Component/BothButton'
 
 const ConfirmPicturePage = ({navigation, route}: {navigation: any, route: any}) => {
+  // console.log(route.params.imageURL)
   let s = Styles.Picture;
   if(route.params.imageType === 'Camera'){
     s = Styles.Camera_Picture

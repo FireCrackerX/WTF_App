@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Styles from '../Styles'
 import FoodSelectWidget from '../Component/FoodSelectWidget'
-import input from '../TestInput.json'
+// import input from '../TestInput.json'
 import fs from 'react-native-fs'
 
 const SelectFoodFromAPIPage = ({navigation, route}) => {
@@ -31,13 +31,14 @@ const SelectFoodFromAPIPage = ({navigation, route}) => {
 
   const saveData = async () => {
     const directory = fs.DocumentDirectoryPath;
-    const filePath = `${directory}/testData.json`;
+    const filePath = `${directory}/history.json`;
     const his1 = {
         imageURL: route.params.imageURL,
         imageType : route.params.imageType,
         date: dateFormat ,
-        detail: input,
+        detail: route.params.inputData,
     };
+    // console.log(his1)
 
     let historyList = []
 
@@ -92,9 +93,9 @@ const SelectFoodFromAPIPage = ({navigation, route}) => {
             <View style={Styles.Com_Content_Background_Box}>
                 <View style={Styles.Com_Background_Button}>
                     {route.params.inputData.map(d => (
-                    <View style={Styles.Food_Select_Widget_Box} key={d.id}>
+                    <View style={Styles.Food_Select_Widget_Box} key={d.image_url}>
                         <TouchableOpacity onPress={() => selectFood(d)}>
-                            <FoodSelectWidget imageURL={d.imageURL} name={d.name} />
+                            <FoodSelectWidget imageURL={d.image_url} name={d.name} />
                         </TouchableOpacity>
                     </View>
                     ))}

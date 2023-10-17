@@ -5,7 +5,7 @@ import SnapButton from '../Component/SnapButton'
 import { Camera, useCameraDevice, useCameraFormat } from 'react-native-vision-camera'
 
 const CameraPage = ({navigation, route}) => {
-    console.log(route.params.type)
+    // console.log(route.params.type)
     const camera = useRef();
     const [cameraPermission, setCameraPermission] = useState();
 
@@ -59,7 +59,7 @@ const CameraPage = ({navigation, route}) => {
             return null
         }
         if(cameraPermission != 'granted') {
-            console.log(cameraPermission != 'granted')
+            // console.log(cameraPermission != 'granted')
             return null
         }
         return rederTakingSnapshot()

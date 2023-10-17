@@ -13,7 +13,7 @@ const DetailPage = ({navigation, route}: {navigation:any, route:any}) => {
   }
 
   const onPressMoreDetail = () => {
-    Linking.openURL(route.params.data.googleLink)
+    Linking.openURL(route.params.data.google_link)
   }
 
   return (
@@ -26,7 +26,7 @@ const DetailPage = ({navigation, route}: {navigation:any, route:any}) => {
                     <Text style={Styles.Com_Background_Button_Text}>{route.params.data.name}</Text>
                     <View style={Styles.Com_ScrollView_Style_Box_Detail}>
                         <RNFadedScrollView allowStartFade={true} allowEndFade={true} fadeColors={['rgba(229, 229, 229, 0)', 'rgba(31, 28, 24, 1)']} fadeSize={50} showsVerticalScrollIndicator={false} style={Styles.Com_ScrollView_Style} >
-                            <TextFoodDetail imageURL={route.params.data.imageURL} desricption={route.params.data.description} ingredient={route.params.data.ingredients} />
+                            <TextFoodDetail imageURL={route.params.data.image_url} desricption={route.params.data.description} ingredient={route.params.data.ingredients} />
                         </RNFadedScrollView>
                     </View>
                     <TouchableOpacity onPress={() => onPressMoreDetail()} style={Styles.Com_YellowBlack_DetailPage_Box}>

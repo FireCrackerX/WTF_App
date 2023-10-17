@@ -1,7 +1,10 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Styles from '../Styles';
-import input from '../TestInput.json'
+import rs from 'react-native-fs'
+import axios from 'axios';
+// import RNFetchBlob from 'react-native-fetch-blob';
+// import input from '../TestInput.json'
 
 interface Detail {
     backText: string;
@@ -13,13 +16,54 @@ interface Detail {
 }
 
 const BothButton = (props: Detail) => {
+  let input
   const onPressBack = () => {
     props.navigation.navigate('SelectPicturePage', {type: props.type})
   }
 
-  const onPressConfirm = () => {
-    // API here
-    props.navigation.navigate('SelectFoodFromAPIPage', {imageURL: props.imageURL, inputData: input, inputType: 'API', imageType: props.imageType})
+  const fetchAPI = async () => {
+    let imageToPass
+
+    await rs.readFile(props.imageURL, 'base64')
+    .then(image => {
+      imageToPass = image
+    })
+    .catch(error => {
+      console.error('Read image error: ', error);
+    })
+
+    // console.log(imageToPass)
+    const formdata = new FormData()
+
+    formdata.append('image', imageToPass)
+    formdata.append('image_type', props.type)
+
+    await fetch('http://0.0.0.0:5000/predict',{
+      method: 'POST',
+      body: formdata,
+      headers : {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        input = data
+        console.log('Response:', input);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      })
+  }
+
+  fetchAPI()
+
+  const onPressConfirm = async () => {
+    if(input.length < 1){
+      props.navigation.navigate('NoImagePage')
+    }
+    else {
+      props.navigation.navigate('SelectFoodFromAPIPage', {imageURL: props.imageURL, inputData: input, inputType: 'API', imageType: props.imageType})
+    }
   }
 
   return (

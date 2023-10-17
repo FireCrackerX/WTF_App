@@ -5,7 +5,7 @@ import NavigateButton from '../Component/NavigateButton'
 import HistoryButton from '../Component/HistoryButton'
 
 const SelectFoodTypePage = ({navigation}: {navigation: any}) => {
-  const onSelectType = (type: string) => {
+  const onSelectType = (type: number) => {
     navigation.navigate('SelectPicturePage', {type: type})
   }
 
@@ -35,13 +35,13 @@ const SelectFoodTypePage = ({navigation}: {navigation: any}) => {
                     <View style={Styles.Com_Background_Button}>
                       <Text style={Styles.Com_Background_Button_Text}>SELECT FOOD TYPE</Text>
                       <Text style={Styles.Com_Background_Button_Detail_Text}></Text>
-                      <TouchableOpacity onPress={() => onSelectType('Dessert')}>
+                      <TouchableOpacity onPress={() => onSelectType(2)}>
                         <NavigateButton text='DESSERT' />
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={() => onSelectType('Curry and Soup')}>
+                      <TouchableOpacity onPress={() => onSelectType(1)}>
                         <NavigateButton text='CURRY AND SOUP' />
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={() => onSelectType('Dish and Appetizer')}>
+                      <TouchableOpacity onPress={() => onSelectType(3)}>
                         <NavigateButton text='DISH AND APPETIZER' />
                       </TouchableOpacity>
                       <TouchableOpacity onPress={() => onPressHistoryButton()} style={Styles.Com_History_Button_Box}>

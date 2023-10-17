@@ -9,6 +9,7 @@ import DetailPage from './Screen/DetailPage';
 import HistoryPage from './Screen/HistoryPage';
 import SelectFoodFromAPIPage from './Screen/SelectFoodFromAPIPage';
 import CameraPage from './Screen/CameraPage';
+import NoImagePage from './Screen/NoImagePage';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="SelectFoodTypePage" component={SelectFoodTypePage} options={{headerShown: false}} />
+        <Stack.Screen name="NoImagePage" component={NoImagePage} options={{headerShown: false}} />
         <Stack.Screen name="CameraPage" component={CameraPage} options={{headerShown: false}} />
         <Stack.Screen name="ConfirmPicturePage" component={ConfirmPicturePage} options={{headerShown: false}} />
         <Stack.Screen name="SelectFoodFromAPIPage" component={SelectFoodFromAPIPage} options={{headerShown: false}} />

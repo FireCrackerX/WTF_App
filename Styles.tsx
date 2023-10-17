@@ -47,7 +47,7 @@ const Styles=StyleSheet.create({
         fontSize: 20,
         fontFamily: 'IstokWeb-Bold',
         alignSelf: 'center',
-        left: 15
+        left: 10
     },
 
     Com_Background_Button: {
@@ -263,7 +263,6 @@ const Styles=StyleSheet.create({
         width: '100%',
         height: '100%',
         justifyContent: 'flex-end'
-        
     },
 
     Background2_Layer2_Box: {
@@ -514,6 +513,19 @@ const Styles=StyleSheet.create({
         fontSize: 14,
         color: '#FFFFFF',
         alignSelf: 'center'
+    },
+
+    Error_Detail_Box: {
+        height: '100%', 
+        width: '100%', 
+        marginTop: '10%'
+    },
+
+    Error_Detail_Text_Desciption: {
+        fontFamily: 'Inter-Bold',      
+        fontSize: 14,
+        color: '#FFFFFF',
+        textAlign: 'center'
     },
 
 })

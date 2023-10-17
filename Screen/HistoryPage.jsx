@@ -16,7 +16,7 @@ const HistoryPage = ({navigation}) => {
   }
 
   const directory = fs.DocumentDirectoryPath;
-  const filePath = `${directory}/testData.json`;
+  const filePath = `${directory}/history.json`;
 
   useEffect(() => {
     fs.readFile(filePath, 'utf8')
@@ -40,7 +40,7 @@ const HistoryPage = ({navigation}) => {
                       <View style={Styles.Com_ScrollView_Style_Box_History}>
                           <RNFadedScrollView allowStartFade={true} allowEndFade={true} fadeColors={['rgba(229, 229, 229, 0)', 'rgba(31, 28, 24, 1)']} fadeSize={50} showsVerticalScrollIndicator={false} style={Styles.Com_ScrollView_Style} >
                               {historyList.map(d => (
-                                <View style={Styles.History_Widget_Box} key={d.imageURL}>
+                                <View style={Styles.History_Widget_Box} key={d.date}>
                                   <TouchableOpacity onPress={() => selectHistory(d.detail)}>
                                     <History_Widget name={d.detail[0].name} date={d.date} imageURL={d.imageURL} imageType={d.imageType} />
                                   </TouchableOpacity>
